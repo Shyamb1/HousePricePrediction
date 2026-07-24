@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -127,3 +127,20 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 
 plt.show()
+rf_model.fit(X_train, y_train)
+
+joblib.dump(rf_model, "house_price_model.pkl")
+
+print("Model saved successfully!")
+loaded_model = joblib.load("house_price_model.pkl")
+
+print("Model loaded successfully!")
+loaded_predictions = loaded_model.predict(X_test)
+comparison = pd.DataFrame({
+    "Actual": y_test.values,
+    "Prediction": loaded_predictions
+})
+
+print(comparison.head(10))
+print("\nFirst Five Predictions")
+print(loaded_predictions[:5])
