@@ -237,7 +237,7 @@ Range:
 
 ## Learning Outcome
 
-After completing Day 6, I can:
+After completing Day 4, I can:
 
 - Build a Linear Regression model.
 - Train the model using training data.
@@ -250,7 +250,7 @@ After completing Day 6, I can:
 
 ## Conclusion
 
-Day 6 introduced the first Machine Learning model for the House Price Prediction project.
+Day 4 introduced the first Machine Learning model for the House Price Prediction project.
 
 The model achieved an R² Score of **0.8671**, indicating strong predictive performance.
 
