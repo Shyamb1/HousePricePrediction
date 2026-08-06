@@ -1,18 +1,19 @@
 import pandas as pd
 import numpy as np
-import joblib
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
+from src.train import train_random_forest
+from src.evaluate import evaluate_model
+from src.predict import save_model, load_model, predict
 # ==========================================================
 # STEP 1: Load Dataset
 # ==========================================================
 
-df = pd.read_csv("cleaned_train.csv")
+df = pd.read_csv("data/cleaned_train.csv")
 
 print("First 5 Rows:")
 print(df.head())
@@ -90,17 +91,13 @@ print("R2  :", lr_r2)
 
 print("\n========== Tuned Random Forest ==========")
 
-rf_model = RandomForestRegressor(
-    n_estimators=300,
-    max_depth=20,
-    min_samples_split=5,
-    min_samples_leaf=2,
-    random_state=42
+rf_model = train_random_forest(X_train, y_train)
+
+rf_predictions, rf_mae, rf_rmse, rf_r2 = evaluate_model(
+    rf_model,
+    X_test,
+    y_test
 )
-
-rf_model.fit(X_train, y_train)
-
-rf_predictions = rf_model.predict(X_test)
 
 comparison_rf = pd.DataFrame({
     "Actual Price": y_test.values,
@@ -108,10 +105,6 @@ comparison_rf = pd.DataFrame({
 })
 
 print(comparison_rf.head())
-
-rf_mae = mean_absolute_error(y_test, rf_predictions)
-rf_rmse = np.sqrt(mean_squared_error(y_test, rf_predictions))
-rf_r2 = r2_score(y_test, rf_predictions)
 
 print("\nTuned Random Forest Performance")
 
@@ -174,7 +167,7 @@ plt.show()
 # STEP 9: Save Model
 # ==========================================================
 
-joblib.dump(rf_model, "house_price_model.pkl")
+save_model(rf_model)
 
 print("\nModel saved successfully!")
 
@@ -182,11 +175,14 @@ print("\nModel saved successfully!")
 # STEP 10: Load Model
 # ==========================================================
 
-loaded_model = joblib.load("house_price_model.pkl")
+loaded_model = load_model()
 
 print("Model loaded successfully!")
 
-loaded_predictions = loaded_model.predict(X_test)
+loaded_predictions = predict(
+    loaded_model,
+    X_test
+)
 
 comparison_loaded = pd.DataFrame({
     "Actual": y_test.values,
