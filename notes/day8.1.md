@@ -1,4 +1,4 @@
-# Day 8 - Project Refactoring
+# Day 8.1 - Project Refactoring
 
 ## Objective
 

@@ -9,6 +9,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from src.train import train_random_forest
 from src.evaluate import evaluate_model
 from src.predict import save_model, load_model, predict
+from sklearn.model_selection import cross_val_score
 # ==========================================================
 # STEP 1: Load Dataset
 # ==========================================================
@@ -52,7 +53,10 @@ print("Testing Data:", X_test.shape)
 
 # Save processed dataset
 processed_df = pd.concat([X, y], axis=1)
-processed_df.to_csv("processed_train.csv", index=False)
+processed_df.to_csv(
+    "data/processed_train.csv",
+    index=False
+)
 
 print("Processed dataset saved!")
 
@@ -112,6 +116,22 @@ print("MAE :", rf_mae)
 print("RMSE:", rf_rmse)
 print("R2  :", rf_r2)
 
+print("\n========== Cross Validation ==========")
+
+cv_scores = cross_val_score(
+    rf_model,
+    X,
+    y,
+    cv=5,
+    scoring="r2"
+)
+
+print("Cross Validation Scores:")
+print(cv_scores)
+
+print("\nAverage R2 Score:", cv_scores.mean())
+
+print("Standard Deviation:", cv_scores.std())
 # ==========================================================
 # STEP 7: Model Comparison
 # ==========================================================
