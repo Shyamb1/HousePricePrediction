@@ -2,25 +2,34 @@
 
 ## Objective
 
-Deploy the House Price Prediction application online.
+Deploy the House Price Prediction machine learning application online.
 
 ## Work Completed
 
 - Created requirements.txt
-- Prepared Streamlit application for deployment
+- Added required Python dependencies
+- Tested the Streamlit application locally
 - Connected GitHub repository with Streamlit Community Cloud
-- Deployed the application
-- Created professional README
-- Added live application link
+- Fixed deployment dependency error
+- Successfully deployed the Streamlit application
+- Tested house price prediction on the live application
 
 ## Final Model
 
-Random Forest Regression
+Tuned Random Forest Regressor
 
-## Test R2 Score
+## Model Performance
 
-0.8893
+MAE: 17778.25
 
-## Final Outcome
+RMSE: 29139.30
 
-Completed an end-to-end Machine Learning project with a deployed Streamlit web application.
+R2 Score: 0.8893
+
+## Deployment
+
+The application is deployed using Streamlit Community Cloud.
+
+## Final Result
+
+The House Price Prediction project is now available as a live web application.
