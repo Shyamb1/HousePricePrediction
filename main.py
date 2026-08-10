@@ -1,15 +1,16 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import joblib
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.model_selection import cross_val_score
 
 from src.train import train_random_forest
 from src.evaluate import evaluate_model
 from src.predict import save_model, load_model, predict
-from sklearn.model_selection import cross_val_score
 # ==========================================================
 # STEP 1: Load Dataset
 # ==========================================================
@@ -32,6 +33,15 @@ print("\nShape after Encoding:", df.shape)
 # ==========================================================
 
 X = df.drop("SalePrice", axis=1)
+
+# Save feature names for Streamlit
+joblib.dump(
+    X.columns.tolist(),
+    "models/feature_columns.pkl"
+)
+
+print("Feature columns saved!")
+
 y = df["SalePrice"]
 
 print("Features Shape:", X.shape)
