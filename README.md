@@ -143,15 +143,11 @@ HousePricePrediction/
 │   ├── day5.md
 │   ├── day6.md
 │   ├── day7.md
-│   ├── day8.md
+│   ├── day8.1md
+│   ├── day8.2md
 │   ├── day9.md
 │   ├── day10.md
 │   ├── day11.md
-│   ├── day12.md
-│   ├── day13.md
-│   ├── day14.md
-│   ├── day15.md
-│   └── day16.md
 │
 ├── src/
 │   ├── evaluate.py
