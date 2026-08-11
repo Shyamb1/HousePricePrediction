@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load dataset
-df = pd.read_csv("train.csv")
+df = pd.read_csv("data/train.csv")
 
 plt.figure(figsize=(10,6))
 

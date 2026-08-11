@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv("train.csv")
+df = pd.read_csv("data/train.csv")
 
 missing_values = df.isnull().sum()
 missing_values = missing_values[missing_values > 0]
