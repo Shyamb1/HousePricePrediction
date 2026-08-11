@@ -64,6 +64,10 @@ The Tuned Random Forest model performed better than Linear Regression on the tes
 
 ![Model Performance Comparison](model_comparison.png)
 
+## 🖥️ Application Preview
+
+![House Price Prediction Application](streamlit_app.jpeg)
+
 ## 📊 Important Features
 
 The top features identified by the Random Forest model were:
