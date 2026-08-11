@@ -60,6 +60,10 @@ The complete machine learning workflow includes:
 
 The Tuned Random Forest model performed better than Linear Regression on the test dataset.
 
+### Model Performance Comparison
+
+![Model Performance Comparison](model_comparison.png)
+
 ## 📊 Important Features
 
 The top features identified by the Random Forest model were:
@@ -242,3 +246,4 @@ B.Tech CSE & AIML
 ---
 
 ⭐ If you find this project useful, consider giving the repository a star!
+
